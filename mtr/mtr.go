@@ -30,7 +30,7 @@ func Mtr(ipAddr string, maxHops, sntSize, timeoutMs int) (result string, err err
 		return buffer.String(), err
 	}
 
-	buffer.WriteString(fmt.Sprintf("%-3v %-20v  %10v%c  %10v  %10v  %10v  %10v  %12v  %-80v \n", "", "HOST", "Loss", '%', "Snt", "Last", "Avg", "Best", "Wrst", "GEO"))
+	buffer.WriteString(fmt.Sprintf("%-3v  %-15v  %10v%c  %10v  %10v  %10v  %10v  %10v  %-100v \n", "", "HOST", "Loss", '%', "Snt", "Last", "Avg", "Best", "Wrst", "GEO"))
 
 	var hopStr string
 	var lastHop int
@@ -41,11 +41,11 @@ func Mtr(ipAddr string, maxHops, sntSize, timeoutMs int) (result string, err err
 				hopStr = ""
 			}
 
-			buffer.WriteString(fmt.Sprintf("%-3d %-20v %10.1f%c  %10v  %10.2f  %10.2f  %10.2f  %12.2f  %-80v \n", hop.TTL, hop.Address, hop.Loss, '%', hop.Snt, common.Time2Float(hop.LastTime), common.Time2Float(hop.AvgTime), common.Time2Float(hop.BestTime), common.Time2Float(hop.WrstTime), GeoFor(hop.Address)))
+			buffer.WriteString(fmt.Sprintf("%-3d  %-15v  %10.1f%c  %10v  %10.2f  %10.2f  %10.2f  %10.2f  %-100v \n", hop.TTL, hop.Address, hop.Loss, '%', hop.Snt, common.Time2Float(hop.LastTime), common.Time2Float(hop.AvgTime), common.Time2Float(hop.BestTime), common.Time2Float(hop.WrstTime), GeoFor(hop.Address)))
 			lastHop = hop.TTL
 		} else {
 			if index != len(out.Hops)-1 {
-				hopStr += fmt.Sprintf("%-3d %-20v  %10.1f%c  %10v  %10.2f  %10.2f  %10.2f  %12.2f %-80v \n", hop.TTL, "???", float32(100), '%', int(0), float32(0), float32(0), float32(0), float32(0), "")
+				hopStr += fmt.Sprintf("%-3d  %-15v  %10.1f%c  %10v  %10.2f  %10.2f  %10.2f  %10.2f  %-100v \n", hop.TTL, "???", float32(100), '%', int(0), float32(0), float32(0), float32(0), float32(0), "null")
 			} else {
 				lastHop++
 				buffer.WriteString(fmt.Sprintf("%-3d %-48v\n", lastHop, "???"))

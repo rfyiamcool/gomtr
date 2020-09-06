@@ -2,7 +2,7 @@
 
 golang mtr and ping tools
 
-### 更新纯真库
+### update qqwry data (解析ip地址位置的纯真库)
 
 ```bash
 wget http://update.cz88.net/soft/setup.zip
@@ -17,7 +17,7 @@ run mtr
 sudo go run cmd/main.go 8.8.8.8
 ```
 
-stdout
+terminal stdout
 
 ```
 Start: 2020-09-06 02:48:50, DestAddr: 8.8.8.8
