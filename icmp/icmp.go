@@ -18,7 +18,7 @@ const (
 	ProtocolIPv6ICMP = 58 // ICMP for IPv6
 )
 
-func Icmp(destAddr string, ttl, pid int, timeout time.Duration, seq int) (hop common.IcmpReturn, err error) {
+func Icmp(destAddr string, ttl, pid int, timeout time.Duration, seq int) (hop common.IcmpResp, err error) {
 	ip := net.ParseIP(destAddr)
 	if ip == nil {
 		return hop, fmt.Errorf("ip: %v is invalid", destAddr)
@@ -32,7 +32,7 @@ func Icmp(destAddr string, ttl, pid int, timeout time.Duration, seq int) (hop co
 	}
 }
 
-func icmpIpv4(localAddr string, dst net.Addr, ttl, pid int, timeout time.Duration, seq int) (hop common.IcmpReturn, err error) {
+func icmpIpv4(localAddr string, dst net.Addr, ttl, pid int, timeout time.Duration, seq int) (hop common.IcmpResp, err error) {
 	hop.Success = false
 	start := time.Now()
 	c, err := icmp.ListenPacket("ip4:icmp", localAddr)
@@ -81,7 +81,7 @@ func icmpIpv4(localAddr string, dst net.Addr, ttl, pid int, timeout time.Duratio
 	return hop, err
 }
 
-func icmpIpv6(localAddr string, dst net.Addr, ttl, pid int, timeout time.Duration, seq int) (hop common.IcmpReturn, err error) {
+func icmpIpv6(localAddr string, dst net.Addr, ttl, pid int, timeout time.Duration, seq int) (hop common.IcmpResp, err error) {
 	hop.Success = false
 	start := time.Now()
 	c, err := icmp.ListenPacket("ip6:ipv6-icmp", localAddr)

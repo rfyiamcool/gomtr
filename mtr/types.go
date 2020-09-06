@@ -22,7 +22,7 @@ import (
 const DEFAULT_MAX_HOPS = 30
 const DEFAULT_TIMEOUT_MS = 800
 const DEFAULT_PACKET_SIZE = 56
-const DEFAULT_SNT_SIZE = 10
+const DEFAULT_SNT_SIZE = 5
 
 type MtrReturn struct {
 	Success  bool

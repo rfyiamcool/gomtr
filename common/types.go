@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-type IcmpReturn struct {
+type IcmpResp struct {
 	Success bool
 	Addr    string
 	Elapsed time.Duration
