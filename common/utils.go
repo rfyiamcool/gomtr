@@ -11,23 +11,24 @@ import (
 	"github.com/rfyiamcool/gomtr/spew"
 )
 
-func DestAddrs(addr string) ([]string, error) {
+// LookupAddrs nslookup domain name, return ips
+func LookupIps(addr string) ([]string, error) {
 	addrs, err := net.LookupHost(addr)
 	if err != nil {
 		return nil, err
 	}
 
-	ipAddrs := make([]string, 0)
+	ips := make([]string, 0)
 	for _, addr := range addrs {
-		ipAddr, err := net.ResolveIPAddr("ip", addr)
+		ipaddr, err := net.ResolveIPAddr("ip", addr)
 		if err != nil {
 			continue
 		}
 
-		ipAddrs = append(ipAddrs, ipAddr.IP.String())
+		ips = append(ips, ipaddr.IP.String())
 	}
 
-	return ipAddrs, nil
+	return ips, nil
 }
 
 func Goid() int {

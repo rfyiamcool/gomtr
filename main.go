@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/rfyiamcool/gomtr/common"
 	"github.com/rfyiamcool/gomtr/mtr"
 	"github.com/rfyiamcool/gomtr/spew"
 )
@@ -54,7 +55,17 @@ func main() {
 	parseCommand()
 
 	for _, addr := range targets {
-		mm, err := mtr.Mtr(addr, 30, 3, 800)
+		ips, err := common.LookupIps(addr)
+		if err != nil {
+			spew.Errorf("faild to dnsresolv addr %s, err: %v", addr, err)
+			continue
+		}
+		if len(ips) == 0 {
+			spew.Errorf("can't get available ipaddrs with addr %s", addr)
+			continue
+		}
+
+		mm, err := mtr.Mtr(ips[0], 30, 3, 800)
 		if err != nil {
 			spew.Error(err)
 		}

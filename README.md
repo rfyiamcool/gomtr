@@ -2,24 +2,71 @@
 
 golang mtr and ping tools
 
-### update qqwry data (解析ip地址位置的纯真库)
+- support domain name
+- support qq
+- concurrently ping
+- concurrently mtr
+
+### update qqwry.dat
+
+`使用纯真库解析ip地址位置`
 
 ```bash
 wget http://update.cz88.net/soft/setup.zip
 unzip setup.zip
 ```
 
-### mtr
+other mirror dat
 
-run mtr
+[https://qqwry.mirror.noc.one/](https://qqwry.mirror.noc.one/)
+[https://qqwry.xiaorui.cc/](https://qqwry.xiaorui.cc/)
+
+### Install
+
+gomtr Requires `Go >= 1.12`
+
+install command
+
+```bash
+go get -u -v github.com/rfyiamcool/gomtr
+```
+
+local builc
+
+```bash
+go build .
+```
+
+### Usage
+
+print help
 
 ```
+> go build .
+> ./gomtr -h
+
+Usage: gomtr [-hvc] [-mtr] [-ping] hostname list
+
+Options:
+  -c int
+    	run count (default 3)
+  -h	print help()
+  -mtr
+    	handle mtr (default true)
+  -ping
+    	handle ping
+  -v	verbose logging
+```
+
+test mtr command
+
+```bash
 sudo go run cmd/main.go 8.8.8.8
 ```
 
 terminal stdout
 
-```
+```bash
 Start: 2020-09-06 02:48:50, DestAddr: 8.8.8.8
     HOST                        Loss%         Snt        Last         Avg        Best        Wrst  GEO
 1   192.168.124.1               0.0%           3        3.00        7.41        2.03       17.19  局域网:对方和您在同一内部网

@@ -19,7 +19,7 @@ func Mtr(ipAddr string, maxHops, sntSize, timeoutMs int) (result string, err err
 
 	var out MtrResult
 	var buffer bytes.Buffer
-	buffer.WriteString(fmt.Sprintf("Start: %v, DestAddr: %v\n", time.Now().Format("2006-01-02 15:04:05"), ipAddr))
+	buffer.WriteString(fmt.Sprintf("Start: %v, DestAddr: %v\n\n", time.Now().Format("2006-01-02 15:04:05"), ipAddr))
 	out, err = runMtr(ipAddr, &options)
 	if err != nil {
 		buffer.WriteString(fmt.Sprintf("mtr failed due to an error: %v\n", err))
