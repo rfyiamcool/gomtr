@@ -61,7 +61,7 @@ Options:
 test mtr command
 
 ```bash
-sudo go run cmd/main.go 8.8.8.8
+sudo gomtr 8.8.8.8
 ```
 
 terminal stdout
