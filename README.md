@@ -20,6 +20,8 @@ golang mtr and ping tools
 ```bash
 wget http://update.cz88.net/soft/setup.zip
 unzip setup.zip
+mkdir ~/gomtr/
+cp qqwry.dat ~/gomtr/
 ```
 
 **other mirror dat**

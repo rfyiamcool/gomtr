@@ -16,7 +16,7 @@ func Ping(addr string, count, timeout, interval int) (result string, err error) 
 	pingOptions.SetTimeoutMs(timeout)
 	pingOptions.SetIntervalMs(interval)
 
-	ipAddrs, err := common.DestAddrs(addr)
+	ipAddrs, err := common.LookupIps(addr)
 	if err != nil || len(ipAddrs) == 0 {
 		return
 	}

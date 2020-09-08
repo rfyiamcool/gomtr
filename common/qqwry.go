@@ -10,7 +10,7 @@ import (
 
 var (
 	wryLock     sync.Mutex
-	wrydataPath = "qqwry.dat"
+	wrydataPath = "~/gomtr/qqwry.dat"
 )
 
 func GetIpInfo(ip string) (string, string, error) {
