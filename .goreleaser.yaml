@@ -13,7 +13,8 @@ builds:
       - linux
     goarch:
       - amd64
-      - arm64
+      - amd64
+      - windows
 
 archives:
   - format: tar.gz
