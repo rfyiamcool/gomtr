@@ -26,8 +26,8 @@ cp qqwry.dat ~/gomtr/
 
 **other mirror dat**
 
-[https://qqwry.mirror.noc.one/](https://qqwry.mirror.noc.one/)
-[https://qqwry.xiaorui.cc/](https://qqwry.xiaorui.cc/)
+- [https://qqwry.mirror.noc.one/](https://qqwry.mirror.noc.one/)
+- [https://qqwry.xiaorui.cc/](https://qqwry.xiaorui.cc/)
 
 ### Install
 
