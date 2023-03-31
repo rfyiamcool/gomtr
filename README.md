@@ -15,7 +15,7 @@ golang mtr and ping tools
 
 `使用QQ纯真库解析ip地址位置`
 
-**get qqwry.dat**
+**get qqwry.dat from remote**
 
 ```bash
 wget http://update.cz88.net/soft/setup.zip
@@ -24,14 +24,16 @@ mkdir ~/gomtr/
 cp qqwry.dat ~/gomtr/
 ```
 
-**other mirror dat**
+**get qqwry.dat from local**
 
-- [https://qqwry.mirror.noc.one/](https://qqwry.mirror.noc.one/)
-- [https://qqwry.xiaorui.cc/](https://qqwry.xiaorui.cc/)
+```
+mkdir ~/gomtr/
+cp qqwry.dat ~/gomtr/
+```
 
 ### Install
 
-gomtr Requires `Go >= 1.12`
+gomtr Requires `Go >= 1.17`
 
 **install command**
 

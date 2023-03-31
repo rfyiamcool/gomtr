@@ -1,29 +1,40 @@
 package common
 
 import (
-	"errors"
 	"os"
+	"path"
 	"sync"
 
+	"github.com/mitchellh/go-homedir"
 	"github.com/yinheli/qqwry"
 )
 
 var (
-	wryLock     sync.Mutex
-	wrydataPath = "~/gomtr/qqwry.dat"
+	home, _     = homedir.Dir()
+	wrydataPath = path.Join(home, "gomtr/qqwry.dat")
+
+	mu          sync.Mutex
+	geoipParser = buildGeoipParser()
 )
 
 func GetIpInfo(ip string) (string, string, error) {
-	wryLock.Lock()
-	defer wryLock.Unlock()
-
-	_, err := os.Stat(wrydataPath)
-	if os.IsNotExist(err) {
-		return "", "", errors.New("file qwray.dat not found")
+	if geoipParser == nil {
+		return "", "", nil
 	}
 
-	// not thread safe
-	q := qqwry.NewQQwry(wrydataPath)
-	q.Find(ip)
-	return q.Country, q.City, nil
+	// qqwry don't support thread safe.
+	mu.Lock()
+	defer mu.Unlock()
+
+	geoipParser.Find(ip)
+	return geoipParser.Country, geoipParser.City, nil
+}
+
+func buildGeoipParser() *qqwry.QQwry {
+	_, err := os.Stat(wrydataPath)
+	if os.IsNotExist(err) {
+		return nil
+	}
+
+	return qqwry.NewQQwry(wrydataPath)
 }

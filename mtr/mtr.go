@@ -58,6 +58,7 @@ func Mtr(ipAddr string, maxHops, sntSize, timeoutMs int) (result string, err err
 
 func geoFor(ip string) string {
 	country, city, err := common.GetIpInfo(ip)
+	fmt.Println(111, ip, country, city, err)
 	if err != nil {
 		return ""
 	}
