@@ -11,10 +11,10 @@ builds:
       - CGO_ENABLED=0
     goos:
       - linux
+      - windows
     goarch:
       - amd64
-      - amd64
-      - windows
+      - arm64
 
 archives:
   - format: tar.gz
